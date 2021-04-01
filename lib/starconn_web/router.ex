@@ -20,9 +20,11 @@ defmodule StarconnWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", StarconnWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", StarconnWeb do
+    pipe_through :api
+
+    get "/", TestController, :index
+  end
 
   # Enables LiveDashboard only for development
   #
