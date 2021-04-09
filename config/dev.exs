@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :starconn, Starconn.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "starconn_dev",
-  hostname: "localhost",
+  username: "forge",
+  password: "forge",
+  database: "forge",
+  hostname: "db",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

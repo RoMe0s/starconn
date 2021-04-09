@@ -23,7 +23,7 @@ defmodule StarconnWeb.Router do
   scope "/api", StarconnWeb do
     pipe_through :api
 
-    get "/", TestController, :index
+    get "/posts", PostController, :index
   end
 
   # Enables LiveDashboard only for development

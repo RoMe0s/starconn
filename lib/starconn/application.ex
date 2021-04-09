@@ -14,7 +14,7 @@ defmodule Starconn.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Starconn.PubSub},
       # Start the Endpoint (http/https)
-      StarconnWeb.Endpoint
+      StarconnWeb.Endpoint,
       # Start a worker by calling: Starconn.Worker.start_link(arg)
       # {Starconn.Worker, arg}
     ]
@@ -22,7 +22,7 @@ defmodule Starconn.Application do
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Starconn.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(children ++ Starconn.jobs(), opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
