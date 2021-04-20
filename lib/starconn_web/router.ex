@@ -13,6 +13,15 @@ defmodule StarconnWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :telegram do
+    plug :accepts, ["json"]
+    plug StarconnWeb.TelegramBotValidator
+    plug Plug.Parsers,
+    parsers: [:urlencoded, :json],
+      json_decoder: {Jason, :decode!, [[keys: :atoms]]},
+      pass: ["*/*"]
+  end
+
   scope "/", StarconnWeb do
     pipe_through :browser
 
@@ -20,10 +29,15 @@ defmodule StarconnWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  scope "/api", StarconnWeb do
-    pipe_through :api
+  # scope "/api", StarconnWeb do
+  #   pipe_through :api
 
-    get "/posts", PostController, :index
+  # end
+
+  scope "/webhook/:bot_token", StarconnWeb do
+    pipe_through :telegram
+
+    post "/student", TelegramController, :student
   end
 
   # Enables LiveDashboard only for development

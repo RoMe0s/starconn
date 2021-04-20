@@ -6,9 +6,9 @@ defmodule Starconn.AccountsTest do
   describe "users" do
     alias Starconn.Accounts.User
 
-    @valid_attrs %{age: 42, name: "some name"}
-    @update_attrs %{age: 43, name: "some updated name"}
-    @invalid_attrs %{age: nil, name: nil}
+    @valid_attrs %{name: "some name"}
+    @update_attrs %{name: "some updated name"}
+    @invalid_attrs %{name: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =

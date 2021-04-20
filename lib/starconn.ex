@@ -9,7 +9,7 @@ defmodule Starconn do
 
   def jobs do
     [
-      Starconn.Content.Post.SyncPosts
+      #TODO: useless now - Starconn.Content.Post.SyncPosts
     ]
   end
 end

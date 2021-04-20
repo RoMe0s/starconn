@@ -4,7 +4,7 @@ defmodule Starconn.Content.Post.SyncPosts do
   alias Starconn.Repo
   alias Starconn.Content.Post.Post
 
-  @interval 60_000
+  @interval 60_000 * 60
   @base_url "https://starkon.city"
 
   def start_link(args) do
@@ -77,7 +77,7 @@ defmodule Starconn.Content.Post.SyncPosts do
   defp parse_last_page(main_page_document) do
     last_page_element = Floki.find(main_page_document, ".list-pagination [data-page]:last-child")
 
-    if last_page_element == nil do
+    if last_page_element == [] do
       1
     else
       [last_page_value] = Floki.attribute(last_page_element, "data-page")

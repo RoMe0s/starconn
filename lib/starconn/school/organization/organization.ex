@@ -1,16 +1,16 @@
-defmodule Starconn.Accounts.User do
+defmodule Starconn.School.Organization.Organization do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "users" do
+  schema "organizations" do
     field :name, :string
 
     timestamps()
   end
 
   @doc false
-  def changeset(user, attrs) do
-    user
+  def changeset(organization, attrs) do
+    organization
     |> cast(attrs, [:name])
     |> validate_required([:name])
   end
